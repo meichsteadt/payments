@@ -1,0 +1,79 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "materialize";
+.nav-wrapper {
+  padding: 0 10px;
+}
+
+.StripeElement {
+  background-color: white;
+  height: 40px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+#more {
+  position: absolute;
+  bottom: 10px;
+}
+
+
+.stripe-button-el span, .stripe-button-el {
+  text-decoration: none !important;
+  color: #fff !important;
+  background: #64b5f6 !important;
+  text-align: center !important;
+  letter-spacing: .5px !important;
+  transition: .2s ease-out !important;
+  cursor: pointer !important;
+  border: none !important;
+  font-size: 1rem !important;
+  outline: 0 !important;
+  border-radius: 2px !important;
+  display: inline-block !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  padding: 0 2rem !important;
+  text-transform: uppercase !important;
+  vertical-align: middle !important;
+  -webkit-tap-highlight-color: transparent !important;
+  font-family: inherit !important;
+  text-shadow: none !important;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2) !important;
+}
+
+.stripe-button-el {
+  padding: 0 !important;
+  &:hover, span:hover {
+    background-color: #90caf9 !important;
+  }
+}

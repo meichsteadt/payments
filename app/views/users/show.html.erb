@@ -1,0 +1,35 @@
+<h3 class="center-align">Your subscriptions</h3>
+<hr>
+<% @user.subscriptions.each do |subscription| %>
+  <div class="row">
+    <%= form_for(subscription) do |f| %>
+    <div class="col s4">
+      <h5><%= subscription.product.name %></h5>
+    </div>
+    <div class="col s4">
+      <h5><%= number_to_currency(subscription.get_price / 100).to_s + "/" + subscription.get_interval %></h5>
+    </div>
+    <div class="col s4">
+      <% if subscription.subscribed %>
+        <%= hidden_field_tag 'subscription[subscribed]', false %>
+        <%= f.submit 'Unsubscribe', class: "btn red" %>
+      <% elsif !@user.has_stripe_token? %>
+        <%= hidden_field_tag 'subscription[subscribed]', true %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= ENV["PUBLISHABLE_KEY"] %>"
+                data-description="A <%= subscription.get_interval %>'s subscription"
+                data-amount="<%= subscription.get_price %>"
+                data-locale="auto",
+                data-name="Matt Eichsteadt",
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png">
+        </script>
+      <% else %>
+        <%= hidden_field_tag 'subscription[subscribed]', true %>
+        <%= f.submit 'Subscribe', class: "btn" %>
+      <% end %>
+    </div>
+    <% end %>
+</div>
+<% end %>
+
+<p id="more">If interested in any of my other products, please feel to reach out to me at <a href="mailto:matteichsteadt@gmail.com">matteichsteadt@gmail.com</a>. To see more of my work go to <a href="http://matteichsteadt.com" target="_blank">matteichsteadt.com</a></p>

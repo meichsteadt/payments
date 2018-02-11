@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Payments</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+
+  </head>
+
+  <body>
+    <nav class="teal">
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Payments <i class="material-icons">payment</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% unless current_user %>
+            <%= yield :navs %>
+          <% else %>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <p><%= flash[:notice] %></p>
+      <%= yield %>
+    </div>
+  </body>
+</html>
