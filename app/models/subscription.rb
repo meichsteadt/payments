@@ -46,7 +46,7 @@ class Subscription < ApplicationRecord
 
   def find_kiosk_user
     # RestClient.get('https://homelegance-kiosk.herokuapp.com/')
-    users = JSON.parse(RestClient.get('http://localhost:3001/users.json').to_s)
+    users = JSON.parse(RestClient.get('https://homelegance-kiosk.herokuapp.com/users.json').to_s)
     users.map {|e| e["login"]}.include?(self.user.email) ? true : false
   end
 end
