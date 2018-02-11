@@ -38,7 +38,7 @@ class Subscription < ApplicationRecord
     user = self.user
     unless self.find_kiosk_user
       random_string = SecureRandom.hex(5)
-      RestClient.post('http://localhost:3001/users', {login: user.email, password: random_string}, headers={key: Base64.encode64(ENV['KIOSK_KEY']), secret: Base64.encode64(ENV['KIOSK_SECRET'])})
+      RestClient.post('https://homelegance-kiosk.herokuapp.com/users', {login: user.email, password: random_string}, headers={key: Base64.encode64(ENV['KIOSK_KEY']), secret: Base64.encode64(ENV['KIOSK_SECRET'])})
     else
       return "User already exists"
     end
